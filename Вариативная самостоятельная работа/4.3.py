@@ -24,12 +24,12 @@ def set_operations(lst, operation):
   return final_set
  
 def get_sets():
-  a = int(input('Введите колличество множеств:'))
+  a = int(input('Введите количество множеств: '))
   lst = []
   for i in range(a):
-     elem = set(input('Введите множество через запятую и без пробелов: '))
-     elem.remove(',')
-     lst.append(elem)
+     elem = input('Введите множество через запятую и без пробелов: ')
+     elem = elem.split(",")
+     lst.append(set(elem))
   a = ' 1) Объединение множеств (a | b)\n'
   b = ' 2) Пересечение множеств (a & b)\n'
   c = ' 3) Разность множеств (a - b)\n'
