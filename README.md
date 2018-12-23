@@ -58,6 +58,31 @@ sorted_list = sorted(new_list)
 sorted_list1 = sorted(new_list, reverse=True) #сортируем в обратном порядке
 ```
 
+**Параметрическое тестирование функции insertion_sort с помощью модуля pytest**
+
+В отдельном файле test_main.py:
+
+```Python
+import pytest
+from main import insertion_sort
+
+
+@pytest.mark.parametrize("description,unsorted,expected", [
+    ("positive", [2, 1, 3, 10], [1, 2, 3, 10]),
+    ("negative", [-2, -1, -3, -100], [-100, -3, -2, -1]),
+    ("including zero", [2, 0, 1], [0, 1, 2]),
+    ("duplicate values", [0, 5, 1, 0, 5], [0, 0, 1, 5, 5]),
+    ("floats", [0.1, 0.3, 0.2], [0.1, 0.2, 0.3]),
+])
+def test_main_sort(description, unsorted, expected):
+    assert insertion_sort(unsorted) == expected
+```
+Запуск теста из консоли: ``>python -m pytest -v test_main.py``
+
+Результат: тест пройден для всех параметров!
+
+![](https://github.com/python-advance/sem5-collections-Yalkinzsun/blob/master/%D0%98%D0%BD%D0%B2%D0%B0%D1%80%D0%B8%D0%B0%D0%BD%D1%82%D0%BD%D0%B0%D1%8F%20%D1%81%D0%B0%D0%BC%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/1.png)
+
 4.2. Создание программы по распределению списка с случайными значениями на два списка по определенному критерию (четность/нечетность, положительные/отрицательные числа).
 
 Для критерия чётность/нечётность функция может выглядеть следующим образом:
